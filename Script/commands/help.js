@@ -1,124 +1,417 @@
+const fs = require("fs-extra");
+const request = require("request");
+const path = require("path");
+
 module.exports.config = {
-        name: "help",
-        version: "1.0.2",
-        hasPermssion: 0,
-        credits: "𝐂𝐘𝐁𝐄𝐑 ☢️_𖣘 -𝐁𝐎𝐓 ⚠️ 𝑻𝑬𝑨𝑴_ ☢️",
-        description: "FREE SET-UP MESSENGER",
-        commandCategory: "system",
-        usages: "[Name module]",
-        cooldowns: 5,
-        envConfig: {
-                autoUnsend: true,
-                delayUnsend: 20
-        }
+    name: "help",
+    version: "3.0.0",
+    hasPermssion: 0,
+    credits: "Siyam (Final Edit)",
+    description: "Full Stylish Help Menu",
+    commandCategory: "system",
+    usages: "[command]",
+    cooldowns: 5
 };
 
-module.exports.languages = {
- "en": {
-    "moduleInfo": "╭──────•◈•──────╮\n |        𝗜𝘀𝗹𝗮𝗺𝗶𝗰𝗸 𝗰𝗵𝗮𝘁 𝗯𝗼𝘁\n |●𝗡𝗮𝗺𝗲: •—» %1 «—•\n |●𝗨𝘀𝗮𝗴𝗲: %3\n |●𝗗𝗲𝘀𝗰𝗿𝗶p𝘁𝗶𝗼𝗻: %2\n |●𝗖𝗮𝘁𝗲𝗴𝗼𝗿𝘆: %4\n |●𝗪𝗮𝗶𝘁𝗶𝗻𝗴 𝘁𝗶𝗺𝗲: %5 seconds(s)\n |●𝗣𝗲𝗿𝗺𝗶𝘀𝘀𝗶𝗼𝗻: %6\n |𝗠𝗼𝗱𝘂𝗹𝗲 𝗰𝗼𝗱𝗲 𝗯𝘆\n |•—» Ullash ッ «—•\n╰──────•◈•──────╯",
-    "helpList": '[ There are %1 commands on this bot, Use: "%2help nameCommand" to know how to use! ]',
-    "user": "User",
-        "adminGroup": "Admin group",
-        "adminBot": "Admin bot"
-  }
-};
+const helpImages = [
+    "https://i.imgur.com/ZD5ng1c.jpeg",
+    "https://i.imgur.com/92xZO9N.jpeg"
+];
 
-module.exports.handleEvent = function ({ api, event, getText }) {
- const { commands } = global.client;
- const { threadID, messageID, body } = event;
+function downloadImages(callback) {
+    const url = helpImages[Math.floor(Math.random() * helpImages.length)];
+    const filePath = path.join(__dirname, "cache", "help.jpg");
 
- if (!body || typeof body == "undefined" || body.indexOf("help") != 0) return;
- const splitBody = body.slice(body.indexOf("help")).trim().split(/\s+/);
- if (splitBody.length == 1 || !commands.has(splitBody[1].toLowerCase())) return;
- const threadSetting = global.data.threadData.get(parseInt(threadID)) || {};
- const command = commands.get(splitBody[1].toLowerCase());
- const prefix = (threadSetting.hasOwnProperty("PREFIX")) ? threadSetting.PREFIX : global.config.PREFIX;
- return api.sendMessage(getText("moduleInfo", command.config.name, command.config.description, `${prefix}${command.config.name} ${(command.config.usages) ? command.config.usages : ""}`, command.config.commandCategory, command.config.cooldowns, ((command.config.hasPermssion == 0) ? getText("user") : (command.config.hasPermssion == 1) ? getText("adminGroup") : getText("adminBot")), command.config.credits), threadID, messageID);
+    request(url)
+        .pipe(fs.createWriteStream(filePath))
+        .on("close", () => callback([filePath]));
 }
 
-module.exports. run = function({ api, event, args, getText }) {
-  const axios = require("axios");
-  const request = require('request');
-  const fs = require("fs-extra");
- const { commands } = global.client;
- const { threadID, messageID } = event;
- const command = commands.get((args[0] || "").toLowerCase());
- const threadSetting = global.data.threadData.get(parseInt(threadID)) || {};
- const { autoUnsend, delayUnsend } = global.configModule[this.config.name];
- const prefix = (threadSetting.hasOwnProperty("PREFIX")) ? threadSetting.PREFIX : global.config.PREFIX;
-if (args[0] == "all") {
-    const command = commands.values();
-    var group = [], msg = "";
-    for (const commandConfig of command) {
-      if (!group.some(item => item.group.toLowerCase() == commandConfig.config.commandCategory.toLowerCase())) group.push({ group: commandConfig.config.commandCategory.toLowerCase(), cmds: [commandConfig.config.name] });
-      else group.find(item => item.group.toLowerCase() == commandConfig.config.commandCategory.toLowerCase()).cmds.push(commandConfig.config.name);
-    }
-    group.forEach(commandGroup => msg += `❄️ ${commandGroup.group.charAt(0).toUpperCase() + commandGroup.group.slice(1)} \n${commandGroup.cmds.join(' • ')}\n\n`);
+module.exports.run = function ({ api, event }) {
+    const { threadID, messageID } = event;
 
-    return axios.get('https://loidsenpaihelpapi.miraiandgoat.repl.co').then(res => {
-    let ext = res.data.data.substring(res.data.data.lastIndexOf(".") + 1);
-      let admID = "61551846081032";
+    const helpText = `🖤🖤🖤🖤🖤🖤🖤🖤🖤🖤🖤🖤
+𝘽𝙊𝙏 𝙃𝙀𝙇𝙋 𝙈𝙀𝙉𝙐
+🖤🖤🖤🖤🖤🖤🖤🖤🖤🖤🖤🖤
 
-      api.getUserInfo(parseInt(admID), (err, data) => {
-      if(err){ return console.log(err)}
-     var obj = Object.keys(data);
-    var firstname = data[obj].name.replace("@", "");
-    let callback = function () {
-        api.sendMessage({ body:`✿🄲🄾🄼🄼🄰🄽🄳 🄻🄸🅂🅃✿\n\n` + msg + `✿══════════════✿\n│𝗨𝘀𝗲 ${prefix}help [Name?]\n│𝗨𝘀𝗲 ${prefix}help [Page?]\n│𝗡𝗔𝗠𝗘 𝗢𝗪𝗡𝗘𝗥 : │Ullash ッ\n│𝗧𝗢𝗧𝗔𝗟 :  ${commands.size}\n————————————`, mentions: [{
-                           tag: firstname,
-                           id: admID,
-                           fromIndex: 0,
-                 }],
-            attachment: fs.createReadStream(__dirname + `/cache/472.${ext}`)
-        }, event.threadID, (err, info) => {
-        fs.unlinkSync(__dirname + `/cache/472.${ext}`);
-        if (autoUnsend == false) {
-            setTimeout(() => {
-                return api.unsendMessage(info.messageID);
-            }, delayUnsend * 1000);
-        }
-        else return;
-    }, event.messageID);
-        }
-         request(res.data.data).pipe(fs.createWriteStream(__dirname + `/cache/472.${ext}`)).on("close", callback);
-     })
-      })
-};
- if (!command) {
-  const arrayInfo = [];
-  const page = parseInt(args[0]) || 1;
-    const numberOfOnePage = 15;
-    let i = 0;
-    let msg = "";
+💠 SYSTEM 💠
+• help • helpall • prefix • setprefix • setname • setemoji • settings
 
-    for (var [name, value] of (commands)) {
-      name += ``;
-      arrayInfo.push(name);
-    }
+💠 ADMIN 💠
+• admin • adminonly • adduser • kick • ban • out
 
-    arrayInfo.sort((a, b) => a.data - b.data);  
-const first = numberOfOnePage * page - numberOfOnePage;
-   i = first;
-   const helpView = arrayInfo.slice(first, first + numberOfOnePage);
+💠 GROUP 💠
+• groupname • groupimage • listadmin
 
+💠 INFO 💠
+• info • uid • tid
 
-   for (let cmds of helpView) msg += `•—»[ ${cmds} ]«—•\n`;
-    const siu = `╭──────•◈•──────╮\n |        𝗜𝘀𝗹𝗮𝗺𝗶𝗰𝗸 𝗰𝗵𝗮𝘁 𝗯𝗼𝘁 \n |   🄲🄾🄼🄼🄰🄽🄳 🄻🄸🅂🅃       \n╰──────•◈•──────╯`;
-const text = `╭──────•◈•──────╮\n│𝗨𝘀𝗲 ${prefix}help [Name?]\n│𝗨𝘀𝗲 ${prefix}help [Page?]\n│𝗡𝗔𝗠𝗘 𝗢𝗪𝗡𝗘𝗥 : │ Ullash ッ\n│𝗧𝗢𝗧𝗔𝗟 : [${arrayInfo.length}]\n│📛🄿🄰🄶🄴📛 :  [${page}/${Math.ceil(arrayInfo.length/numberOfOnePage)}]\n╰──────•◈•──────╯`; 
-    var link = [
-"https://i.imgur.com/HPaSlBu.jpeg", "https://i.imgur.com/HPaSlBu.jpeg", "https://i.imgur.com/WXQIgMz.jpeg", "https://i.postimg.cc/QdgH08j6/Messenger-creation-C2-A39-DCF-A8-E7-4-FC7-8715-2559476-FEEF4.gif",
-"https://i.imgur.com/WXQIgMz.jpeg",
-"https://i.imgur.com/ybM9Wtr.jpeg",
-"https://i.imgur.com/HPaSlBu.jpeg",
-    ]
-     var callback = () => api.sendMessage({ body: siu + "\n\n" + msg  + text, attachment: fs.createReadStream(__dirname + "/cache/loidbutter.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/loidbutter.jpg"), event.messageID);
-    return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname + "/cache/loidbutter.jpg")).on("close", () => callback());
- }
-const leiamname = getText("moduleInfo", command.config.name, command.config.description, `${(command.config.usages) ? command.config.usages : ""}`, command.config.commandCategory, command.config.cooldowns, ((command.config.hasPermssion == 0) ? getText("user") : (command.config.hasPermssion == 1) ? getText("adminGroup") : getText("adminBot")), command.config.credits);
+💠 MEDIA 💠
+• video • song • youtube
 
-  var link = [
-"https://i.postimg.cc/QdgH08j6/Messenger-creation-C2-A39-DCF-A8-E7-4-FC7-8715-2559476-FEEF4.gif",
-  ]
-    var callback = () => api.sendMessage({ body: leiamname, attachment: fs.createReadStream(__dirname + "/cache/loidbutter.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/loidbutter.jpg"), event.messageID);
-return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname + "/cache/loidbutter.jpg")).on("close", () => callback());
+💠 FUN 💠
+• slap • hug • kiss • love
+
+💠 GAME 💠
+• slot • quiz
+
+💠 AI 💠
+• ai • prompt
+
+💠 SEARCH 💠
+• google • search
+
+💠 TOOLS 💠
+• uptime • say
+
+━━━━━━━━━━━━━━━━━━
+
+🔥 এডমিন ছাড়া ট্রাই করলে কাজ করবে না 🔥
+🔥 দেখাবে এই কমান্ড নেই..............🔥
+
+ 💠• slap 💠
+ 💠• hug 💠
+ 💠• kiss 💠
+ 💠• love 💠
+ 💠• cry 💠
+ 💠• laugh 💠
+ 💠• dance 💠
+ 💠• sing 💠
+ 💠• joke 💠
+ 💠• roast 💠
+ 💠• marry 💠
+ 💠• divorce 💠
+ 💠• date 💠
+ 💠• propose 💠
+ 💠• prank 💠
+ 💠• ghost 💠
+ 💠• zombie 💠
+ 💠• ninja 💠
+ 💠• hacker 💠
+ 💠• spy 💠
+ 💠• police 💠
+ 💠• thief 💠
+ 💠• king 💠
+ 💠• queen 💠
+ 💠• baby 💠
+ 💠• boss 💠
+ 💠• noob 💠
+ 💠• pro 💠
+ 💠• god 💠
+ 💠• devil 💠
+ 💠• angel 💠
+ 💠• demon 💠
+ 💠• fire 💠
+ 💠• ice 💠
+ 💠• thunder 💠
+ 💠• storm 💠
+ 💠• rain 💠
+ 💠• snow 💠
+ 💠• sun 💠
+ 💠• moon 💠
+ 💠• star 💠
+ 💠• galaxy 💠
+ 💠• universe 💠
+ 💠• blackhole 💠
+ 💠• time 💠
+ 💠• future 💠
+ 💠• past 💠
+ 💠• dream 💠
+ 💠• nightmare 💠
+ 💠• sleep 💠
+ 💠• wakeup 💠
+ 💠• coffee 💠
+ 💠• tea 💠
+ 💠• milk 💠
+ 💠• cola 💠
+ 💠• burger 💠
+ 💠  𝐒𝐢𝐲𝐚𝐦 𝐇𝐚𝐬𝐚𝐧 𝐜𝐡𝐚𝐭 𝐛𝐨𝐭 💠
+• pizza
+• cake
+• candy
+• chocolate
+• icecream
+• cook
+• eat
+• drink
+• workout
+• gym
+• run
+• walk
+• jump
+• fly
+• swim
+• drive
+• ride
+• crash
+• explode
+• boom
+• shout
+• whisper
+• scream
+• silent
+• angry
+• happy
+• sad
+• mad
+• crazy
+• funny
+• cool
+• hot
+• cute
+• ugly
+• rich
+• poor
+• lucky
+• unlucky
+• win
+• lose
+• gameover
+• revive
+• respawn
+• levelup
+• rankup
+• bossfight
+• monster
+• dragon
+• tiger
+• lion
+• dog
+• cat
+• panda
+• fox
+• wolf
+• bear
+• shark
+• fish
+• bird
+• eagle
+• owl
+• snake
+• spider
+• alien
+• robot
+• ai
+• code
+• debug
+• hackserver
+• virus
+• antivirus
+• firewall
+• encrypt
+• decrypt
+• upload
+• download
+• stream
+• record
+• edit
+• render
+• meme
+• gif
+• sticker
+• avatar
+• profile
+• wallpaper
+• anime
+• movie
+• youtube
+• tiktok
+• facebook
+• instagram
+• google
+• search
+• weather
+• timer
+• reminder
+• note
+• calendar
+• birthday
+• wish
+• gift
+• party
+• music
+• song
+• playlist
+• dj
+• rap
+• rock
+• pop
+• motivation
+• quote
+• fact
+• truth
+• dare
+• quiz
+• riddle
+• puzzle
+• math
+• translate
+• english
+• bangla
+• hindi
+• arabic
+• japanese
+• korean
+• chinese
+• earth
+• mars
+• rocket
+• nasa
+• car
+• bike
+• train
+• plane
+• travel
+• hotel
+• money
+• bank
+• cash
+• loan
+• pay
+• earn
+• shop
+• buy
+• sell
+• crypto
+• bitcoin
+• stock
+• job
+• work
+• success
+• failure
+• study
+• exam
+• result
+• pass
+• fail
+• school
+• college
+• teacher
+• student
+• book
+• write
+• read
+• story
+• poem
+• coding
+• javascript
+• python
+• html
+• css
+• api
+• server
+• hosting
+• cloud
+• security
+• password
+• login
+• logout
+• signup
+• follow
+• unfollow
+• like
+• comment
+• share
+• trending
+• random
+• mystery
+• secret
+ 💠𝕌𝕕𝕒𝕪 ℍ𝕒𝕤𝕒𝕟 𝕊𝕚𝕪𝕒𝕞 💠
+ 💠• unlock 💠
+ 💠• lock 💠
+ 💠• open 💠
+ 💠• close 💠
+ 💠• start 💠
+ 💠• stop 💠
+ 💠• reset 💠
+ 💠• reboot 💠
+ 💠• shutdown 💠
+ 💠 মূর্খের মতো ট্রাই করো না 💠
+╭──────────────╮
+│  S slap      │
+╰──────────────╯
+╭──────────────╮
+│  S hug       │
+╰──────────────╯
+╭──────────────╮
+│  S kiss      │
+╰──────────────╯
+╭──────────────╮
+│  S love      │
+╰──────────────╯
+╭──────────────╮
+│  S cry       │
+╰──────────────╯
+╭──────────────╮
+│  S laugh     │
+╰──────────────╯
+╭──────────────╮
+│  S dance     │
+╰──────────────╯
+╭──────────────╮
+│  S sing      │
+╰──────────────╯
+╭──────────────╮
+│  S joke      │
+╰──────────────╯
+╭──────────────╮
+│  S roast     │
+╰──────────────╯
+╭──────────────╮
+│  S marry     │
+╰──────────────╯
+╭──────────────╮
+│  S divorce   │
+╰──────────────╯
+╭──────────────╮
+│  S date      │
+╰──────────────╯
+╭──────────────╮
+│  S propose   │
+╰──────────────╯
+╭──────────────╮
+│  S prank     │
+╰──────────────╯
+╭──────────────╮
+│  S ghost     │
+╰──────────────╯
+╭──────────────╮
+│  S zombie    │
+╰──────────────╯
+╭──────────────╮
+│  S ninja     │
+╰──────────────╯
+╭──────────────╮
+│  S hacker    │
+╰──────────────╯
+╭──────────────╮
+│  S spy       │
+╰──────────────╯
+╭──────────────╮
+│  S police    │
+╰──────────────╯
+╭──────────────╮
+│  S thief     │
+╰──────────────╯
+╭──────────────╮
+│  S king      │
+╰──────────────╯
+╭──────────────╮
+│  S queen     │
+╰──────────────╯
+
+━━━━━━━━━━━━━━━━━━
+
+📌 FACEBOOK: https://www.facebook.com/profile.php?id=61568411310748 
+📌 WHATSAPP: +8801789138157 
+📌 PREFIX: /
+
+🖤 TOTAL COMMANDS: 400+ 🖤`;
+
+    downloadImages(files => {
+        api.sendMessage({
+            body: helpText,
+            attachment: files.map(f => fs.createReadStream(f))
+        }, threadID, () => files.forEach(f => fs.unlinkSync(f)), messageID);
+    });
 };
