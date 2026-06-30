@@ -1,8 +1,14 @@
+const fs = require("fs-extra");
+const path = require("path");
+const Canvas = require("canvas");
+const axios = require("axios");
+const jimp = require("jimp");
+
 module.exports.config = {
 	name: "rank",
-	version: "2.0.0",
+	version: "2.0.1",
 	hasPermssion: 0,
-	credits: "𝐂𝐘𝐁𝐄𝐑 ☢️_𖣘 -𝐁𝐎𝐓 ⚠️ 𝑻𝑬𝑨𝑴_ ☢️",
+	credits: "𝆠፝𝐒𝐈𝐘𝐀𝐌-𝐇𝐀𝐒𝐀𝐍",
 	description: "View Member Rankings",
 	commandCategory: "Group",
 	usages: " [user] or [tag]",
@@ -11,44 +17,25 @@ module.exports.config = {
 		"fs-extra": "",
 		"path": "",
 		"jimp": "",
-		"node-superfetch": "",
+		"axios": "",
 		"canvas": ""
 	}
 };
 
 module.exports.makeRankCard = async (data) => {    
-    /*
-    * 
-    * Remake from Canvacord
-    * 
-    */
-
-    const fs = global.nodemodule["fs-extra"];
-    const path = global.nodemodule["path"];
-	const Canvas = global.nodemodule["canvas"];
-	const request = global.nodemodule["node-superfetch"];
 	const __root = path.resolve(__dirname, "cache");
 	const PI = Math.PI;
-
     const { id, name, rank, level, expCurrent, expNextLevel } = data;
 
-	Canvas.registerFont(__root + "/regular-font.ttf", {
-		family: "Manrope",
-		weight: "regular",
-		style: "normal"
-	});
-	Canvas.registerFont(__root + "/bold-font.ttf", {
-		family: "Manrope",
-		weight: "bold",
-		style: "normal"
-	});
+	Canvas.registerFont(__root + "/regular-font.ttf", { family: "Manrope", weight: "regular", style: "normal" });
+	Canvas.registerFont(__root + "/bold-font.ttf", { family: "Manrope", weight: "bold", style: "normal" });
 
 	const pathCustom = path.resolve(__dirname, "cache", "customrank");
-	var customDir = fs.readdirSync(pathCustom);
+	var customDir = fs.existsSync(pathCustom) ? fs.readdirSync(pathCustom) : [];
 	var dirImage = __root + "/rankcard.png";
 	customDir = customDir.map(item => item.replace(/\.png/g, ""));
 
-	for (singleLimit of customDir) {
+	for (let singleLimit of customDir) {
 		var limitRate = false;
 		const split = singleLimit.split(/-/g);
 		var min = parseInt(split[0]), max = parseInt((split[1]) ? split[1] : min);
@@ -59,7 +46,6 @@ module.exports.makeRankCard = async (data) => {
 				break;
 			}
 		}
-
 		if (limitRate == true) {
 			dirImage = pathCustom + `/${singleLimit}.png`;
 			break;
@@ -72,9 +58,8 @@ module.exports.makeRankCard = async (data) => {
 	var expWidth = (expCurrent * 610) / expNextLevel;
 	if (expWidth > 610 - 19.5) expWidth = 610 - 19.5;
 	
-	let avatar = await request.get(`https://graph.facebook.com/${id}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`);
-
-	avatar = await this.circle(avatar.body);
+	let avatarResponse = await axios.get(`https://graph.facebook.com/${id}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: 'arraybuffer' });
+	let avatar = await this.circle(avatarResponse.data);
 
 	const canvas = Canvas.createCanvas(1000, 282);
 	const ctx = canvas.getContext("2d");
@@ -86,9 +71,6 @@ module.exports.makeRankCard = async (data) => {
 	ctx.fillStyle = "#FFFFFF";
 	ctx.textAlign = "start";
 	ctx.fillText(name, 270, 164);
-	ctx.font = `42px Manrope`;
-	ctx.fillStyle = "#FF7F24";
-	ctx.textAlign = "center";
 
 	ctx.font = `bold 38px Manrope`;
 	ctx.fillStyle = "#FF0000";
@@ -123,11 +105,11 @@ module.exports.makeRankCard = async (data) => {
 	fs.writeFileSync(pathImg, imageBuffer);
 	return pathImg;
 }
+
 module.exports.circle = async (image) => {
-    const jimp = global.nodemodule["jimp"];
-	image = await jimp.read(image);
-	image.circle();
-	return await image.getBufferAsync("image/png");
+	let img = await jimp.read(image);
+	img.circle();
+	return await img.getBufferAsync("image/png");
 }
 
 module.exports.expToLevel = (point) => {
@@ -149,11 +131,11 @@ module.exports.getInfo = async (uid, Currencies) => {
 }
 
 module.exports.onLoad = async function () {
-	const { resolve } = global.nodemodule["path"];
-    const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
+	const { resolve } = path;
+    const { existsSync, mkdirSync } = fs;
     const { downloadFile } = global.utils;
-	const path = resolve(__dirname, "cache", "customrank");
-    if (!existsSync(path)) mkdirSync(path, { recursive: true });
+	const customPath = resolve(__dirname, "cache", "customrank");
+    if (!existsSync(customPath)) mkdirSync(customPath, { recursive: true });
 
     if (!existsSync(resolve(__dirname, 'cache', 'regular-font.ttf'))) await downloadFile("https://raw.githubusercontent.com/catalizcs/storage-data/master/rank/fonts/regular-font.ttf", resolve(__dirname, 'cache', 'regular-font.ttf'));
 	if (!existsSync(resolve(__dirname, 'cache', 'bold-font.ttf'))) await downloadFile("https://raw.githubusercontent.com/catalizcs/storage-data/master/rank/fonts/bold-font.ttf", resolve(__dirname, 'cache', 'bold-font.ttf'));
@@ -161,41 +143,41 @@ module.exports.onLoad = async function () {
 }
 
 module.exports.run = async ({ event, api, args, Currencies, Users }) => {
-	const fs = global.nodemodule["fs-extra"];
-	
 	let dataAll = (await Currencies.getAll(["userID", "exp"]));
 	const mention = Object.keys(event.mentions);
 
-	dataAll.sort((a, b) => {
-		if (a.exp > b.exp) return -1;
-		if (a.exp < b.exp) return 1;
-	});
+	dataAll.sort((a, b) => b.exp - a.exp);
+
+	const errorMsg = 
+`───────────────
+» ❌ 𝗘𝗿𝗿𝗼𝗿! 𝗣𝗹𝗲𝗮𝘀𝗲 𝘁𝗿𝘆 𝗮𝗴𝗮𝗶𝗻 𝗶𝗻 𝟱 𝘀𝗲𝗰𝗼𝗻𝗱𝘀.
+───────────────
+» 👤 𝆠፝𝐒𝐈𝐘𝐀𝐌-𝐇𝐀𝐒𝐀𝐍`;
 
 	if (args.length == 0) {
 		const rank = dataAll.findIndex(item => parseInt(item.userID) == parseInt(event.senderID)) + 1;
 		const name = global.data.userName.get(event.senderID) || await Users.getNameUser(event.senderID);
-		if (rank == 0) return api.sendMessage("Error❌ Please try again in 5 seconds.", event.threadID, event.messageID);
+		if (rank == 0) return api.sendMessage(errorMsg, event.threadID, event.messageID);
 		const point = await this.getInfo(event.senderID, Currencies);
-		const timeStart = Date.now();
-		let pathRankCard = await this.makeRankCard({ id: event.senderID, name, rank, ...point })
-		return api.sendMessage({body: `${Date.now() - timeStart}`, attachment: fs.createReadStream(pathRankCard, {'highWaterMark': 128 * 1024}) }, event.threadID, () => fs.unlinkSync(pathRankCard), event.messageID);
+		let pathRankCard = await this.makeRankCard({ id: event.senderID, name, rank, ...point });
+		return api.sendMessage({ attachment: fs.createReadStream(pathRankCard) }, event.threadID, () => fs.unlinkSync(pathRankCard), event.messageID);
 	}
 	if (mention.length == 1) {
 		const rank = dataAll.findIndex(item => parseInt(item.userID) == parseInt(mention[0])) + 1;
 		const name = global.data.userName.get(mention[0]) || await Users.getNameUser(mention[0]);
-		if (rank == 0) return api.sendMessage("Error❌ Please try again in 5 seconds.", event.threadID, event.messageID);
+		if (rank == 0) return api.sendMessage(errorMsg, event.threadID, event.messageID);
 		let point = await this.getInfo(mention[0], Currencies);
-		let pathRankCard = await this.makeRankCard({ id: mention[0], name, rank, ...point })
+		let pathRankCard = await this.makeRankCard({ id: mention[0], name, rank, ...point });
 		return api.sendMessage({ attachment: fs.createReadStream(pathRankCard) }, event.threadID, () => fs.unlinkSync(pathRankCard), event.messageID);
 	}
 	if (mention.length > 1) {
 		for (const userID of mention) {
 			const rank = dataAll.findIndex(item => parseInt(item.userID) == parseInt(userID)) + 1;
 			const name = global.data.userName.get(userID) || await Users.getNameUser(userID);
-			if (rank == 0) return api.sendMessage("Error❌ Please try again in 5 seconds.", event.threadID, event.messageID);
+			if (rank == 0) return api.sendMessage(errorMsg, event.threadID, event.messageID);
 			let point = await this.getInfo(userID, Currencies);
-			let pathRankCard = await this.makeRankCard({ id: userID, name, rank, ...point })
-			return api.sendMessage({ attachment: fs.createReadStream(pathRankCard) }, event.threadID, () => fs.unlinkSync(pathRankCard), event.messageID);
+			let pathRankCard = await this.makeRankCard({ id: userID, name, rank, ...point });
+			api.sendMessage({ attachment: fs.createReadStream(pathRankCard) }, event.threadID, () => fs.unlinkSync(pathRankCard), event.messageID);
 		}
 	}
 }
