@@ -1,16 +1,21 @@
+const { loadImage, createCanvas } = require("canvas");
+const fs = require("fs-extra");
+const axios = require("axios");
+
 module.exports.config = {
   name: "playstore",
-  version: "1.0.0",
+  version: "1.0.2",
   hasPermssion: 0,
-  credits: "𝐂𝐘𝐁𝐄𝐑 ☢️_𖣘 -𝐁𝐎𝐓 ⚠️ 𝑻𝑬𝑨𝑴_ ☢️",
-  description: "",
+  credits: "𝆠፝𝐒𝐈𝐘𝐀𝐌-𝐇𝐀𝐒𝐀𝐍",
+  description: "Playstore profile image editor",
   commandCategory: "User",
-  usages: "",
+  usages: "[mention/blank]",
   dependencies: {
+        "canvas": "",
         "axios": "",
         "fs-extra": ""
   },
-  cooldowns: 0
+  cooldowns: 5
 };
  
 module.exports.wrapText = (ctx, name, maxWidth) => {
@@ -42,62 +47,60 @@ module.exports.wrapText = (ctx, name, maxWidth) => {
         });
 }
  
-module.exports.run = async function ({ args, Users, Threads, api, event, Currencies }) {
-  const { loadImage, createCanvas } = require("canvas");
-  const fs = global.nodemodule["fs-extra"];
-  const axios = global.nodemodule["axios"];
+module.exports.run = async function ({ args, Users, api, event }) {
+  const { threadID, messageID, senderID } = event;
   let pathImg = __dirname + "/cache/background.png";
   let pathAvt1 = __dirname + "/cache/Avtmot.png";
  
- 
-  var id = Object.keys(event.mentions)[0] || event.senderID;
+  var id = Object.keys(event.mentions)[0] || senderID;
   var name = await Users.getNameUser(id);
-  var ThreadInfo = await api.getThreadInfo(event.threadID);
  
-  var background = [
- 
-    "https://imgur.com/KDKgqvq.png"
-];
+  var background = ["https://imgur.com/KDKgqvq.png"];
   var rd = background[Math.floor(Math.random() * background.length)];
  
-  let getAvtmot = (
-    await axios.get(
-      `https://graph.facebook.com/${id}/picture?width=720&height=720&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`,
-      { responseType: "arraybuffer" }
-    )
-  ).data;
-  fs.writeFileSync(pathAvt1, Buffer.from(getAvtmot, "utf-8"));
- 
-  let getbackground = (
-    await axios.get(`${rd}`, {
-      responseType: "arraybuffer",
-    })
-  ).data;
-  fs.writeFileSync(pathImg, Buffer.from(getbackground, "utf-8"));
- 
-  let baseImage = await loadImage(pathImg);
-  let baseAvt1 = await loadImage(pathAvt1);
- 
-  let canvas = createCanvas(baseImage.width, baseImage.height);
-  let ctx = canvas.getContext("2d");
-  ctx.drawImage(baseImage, 0, 0, canvas.width, canvas.height);
-    ctx.font = "200 35px Arial-black";
-          ctx.fillStyle = "#000000";
-          ctx.textAlign = "start";
+  try {
+    // আধুনিক ও সচল প্রোফাইল পিকচার এপিআই লজিক
+    let getAvtmot = (
+      await axios.get(`https://graph.facebook.com/${id}/picture?width=720&height=720&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: "arraybuffer" })
+    ).data;
+    fs.writeFileSync(pathAvt1, Buffer.from(getAvtmot, "utf-8"));
+   
+    let getbackground = (await axios.get(`${rd}`, { responseType: "arraybuffer" })).data;
+    fs.writeFileSync(pathImg, Buffer.from(getbackground, "utf-8"));
+   
+    let baseImage = await loadImage(pathImg);
+    let baseAvt1 = await loadImage(pathAvt1);
+   
+    let canvas = createCanvas(baseImage.width, baseImage.height);
+    let ctx = canvas.getContext("2d");
+    ctx.drawImage(baseImage, 0, 0, canvas.width, canvas.height);
+    
+    ctx.font = "200 35px Arial";
+    ctx.fillStyle = "#000000";
+    ctx.textAlign = "start";
          
-         
-          const lines = await this.wrapText(ctx, name, 1160);
-          ctx.fillText(lines.join('\n'), 200,150);//comment
-          ctx.beginPath();
- 
- 
-  ctx.drawImage(baseAvt1, 65, 142, 70, 70);
- 
-  const imageBuffer = canvas.toBuffer();
-  fs.writeFileSync(pathImg, imageBuffer);
-  fs.removeSync(pathAvt1);
-  return api.sendMessage({ body: ` `, attachment: fs.createReadStream(pathImg) },
-      event.threadID,
-      () => fs.unlinkSync(pathImg),
-      event.messageID);
+    const lines = await this.wrapText(ctx, name, 1160);
+    let y = 150;
+    for (let i = 0; i < lines.length; i++) {
+        ctx.fillText(lines[i], 200, y);
+        y += 40;
     }
+    
+    ctx.beginPath();
+    ctx.drawImage(baseAvt1, 65, 142, 70, 70);
+   
+    const imageBuffer = canvas.toBuffer();
+    fs.writeFileSync(pathImg, imageBuffer);
+    fs.removeSync(pathAvt1);
+   
+    return api.sendMessage({ body: "", attachment: fs.createReadStream(pathImg) }, threadID, () => fs.unlinkSync(pathImg), messageID);
+  } catch (error) {
+    if (fs.existsSync(pathAvt1)) fs.removeSync(pathAvt1);
+    if (fs.existsSync(pathImg)) fs.removeSync(pathImg);
+    return api.sendMessage(
+`───────────────
+» ❌ 𝗔𝗻 𝗲𝗿𝗿𝗼𝗿 𝗼𝗰𝗰𝘂𝗿𝗿𝗲𝗱 𝘄𝗵𝗶𝗹𝗲 𝗴𝗲𝗻𝗲𝗿𝗮𝘁𝗶𝗻𝗴 𝘁𝗵𝗲 𝗶𝗺𝗮𝗴𝗲!
+───────────────
+» 👤 𝆠፝𝐒𝐈𝐘𝐀𝐌-𝐇𝐀𝐒𝐀𝐍`, threadID, messageID);
+  }
+}
