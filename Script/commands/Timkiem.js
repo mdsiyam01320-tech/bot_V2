@@ -1,21 +1,45 @@
 module.exports.config = {
     name: "search",
-    version: "1.0.0",
+    version: "1.0.1",
     hasPermssion: 0,
-    credits: "𝐂𝐘𝐁𝐄𝐑 ☢️_𖣘 -𝐁𝐎𝐓 ⚠️ 𝑻𝑬𝑨𝑴_ ☢️",
+    credits: "𝆠፝𝐒𝐈𝐘𝐀𝐌-𝐇𝐀𝐒𝐀𝐍",
     description: "Search results on google",
     commandCategory: "info",
-    usages: "search [Text]",
+    usages: "ব্যবহারের নিয়ম: search [লেখা বা ছবির রিপ্লাই]",
     cooldowns: 5,
-    dependencies: {
-        "request":"",
-        "fs":""
-    }
+    dependencies: {}
 };
 
 module.exports.run = function({ api, event, args }) {
+    const { threadID, messageID } = event;
     let textNeedSearch = "";
     const regex = /(https?:\/\/.*?\.(?:png|jpe?g|gif)(?:\?(?:[\w_-]+=[\w_-]+)(?:&[\w_-]+=[\w_-]+)*)?(.*))($)/;
-    (event.type == "message_reply") ? textNeedSearch = event.messageReply.attachments[0].url: textNeedSearch = args.join(" ");
-    (regex.test(textNeedSearch)) ? api.sendMessage(`https://www.google.com/searchbyimage?&image_url=${textNeedSearch}`, event.threadID, event.messageID): api.sendMessage(`https://www.google.com.vn/search?q=${encodeURIComponent(textNeedSearch)}`, event.threadID, event.messageID);
-}
+    
+    if (event.type == "message_reply" && event.messageReply.attachments && event.messageReply.attachments[0]) {
+        textNeedSearch = event.messageReply.attachments[0].url;
+    } else {
+        textNeedSearch = args.join(" ");
+    }
+
+    if (!textNeedSearch) {
+        return api.sendMessage(
+`───────────────
+» ⚠️ 𝗣𝗹𝗲𝗮𝘀𝗲 𝗲𝗻𝘁𝗲𝗿 𝘁𝗲𝘅𝘁 𝗼𝗿 𝗿𝗲𝗽𝗹𝘆 𝘁𝗼 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲 𝘁𝗼 𝘀𝗲𝗮𝗿𝗰𝗵!
+───────────────
+» 👤 𝆠፝𝐒𝐈𝐘𝐀𝐌-𝐇𝐀𝐒𝐀𝐍`, threadID, messageID);
+    }
+
+    if (regex.test(textNeedSearch)) {
+        return api.sendMessage(
+`───────────────
+» 🔍 𝗜𝗺𝗮𝗴𝗲 𝗦𝗲𝗮𝗿𝗰𝗵 𝗟𝗶𝗻𝗸: https://www.google.com/searchbyimage?&image_url=${encodeURIComponent(textNeedSearch)}
+───────────────
+» 👤 𝆠፝𝐒𝐈𝐘𝐀𝐌-𝐇𝐀𝐒𝐀𝐍`, threadID, messageID);
+    } else {
+        return api.sendMessage(
+`───────────────
+» 🔍 𝗚𝗼𝗼𝗴𝗹𝗲 𝗦𝗲𝗮𝗿𝗰𝗵 𝗟𝗶𝗻𝗸: https://www.google.com/search?q=${encodeURIComponent(textNeedSearch)}
+───────────────
+» 👤 𝆠፝𝐒𝐈𝐘𝐀𝐌-𝐇𝐀𝐒𝐀𝐍`, threadID, messageID);
+    }
+};
