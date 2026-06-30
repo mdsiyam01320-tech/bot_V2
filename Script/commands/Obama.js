@@ -1,16 +1,20 @@
+const { loadImage, createCanvas } = require("canvas");
+const fs = require("fs-extra");
+const axios = require("axios");
+
 module.exports.config = {
 	name: "obama",
-	version: "1.0.1",
+	version: "1.0.2",
 	hasPermssion: 0,
-	credits: "𝐂𝐘𝐁𝐄𝐑 ☢️_𖣘 -𝐁𝐎𝐓 ⚠️ 𝑻𝑬𝑨𝑴_ ☢️",
+	credits: "𝆠፝𝐒𝐈𝐘𝐀𝐌-𝐇𝐀𝐒𝐀𝐍",
 	description: "Obama Tweet post",
 	commandCategory: "edit-img",
 	usages: "[text]",
 	cooldowns: 10,
 	dependencies: {
-		"canvas":"",
-		 "axios":"",
-		 "fs-extra":""
+		"canvas": "",
+		"axios": "",
+		"fs-extra": ""
 	}
 };
 
@@ -44,31 +48,48 @@ module.exports.wrapText = (ctx, text, maxWidth) => {
 } 
 
 module.exports.run = async function({ api, event, args }) {
-	let { senderID, threadID, messageID } = event;
-	const { loadImage, createCanvas } = require("canvas");
-	const fs = global.nodemodule["fs-extra"];
-	const axios = global.nodemodule["axios"];
-	let pathImg = __dirname + '/cache/trump.png';
+	let { threadID, messageID } = event;
+	let pathImg = __dirname + '/cache/obama.png';
 	var text = args.join(" ");
-	if (!text) return api.sendMessage("Enter the content of the comment on the board", threadID, messageID);
-	let getPorn = (await axios.get(`https://i.imgur.com/6fOxdex.png`, { responseType: 'arraybuffer' })).data;
-	fs.writeFileSync(pathImg, Buffer.from(getPorn, 'utf-8'));
-	let baseImage = await loadImage(pathImg);
-	let canvas = createCanvas(baseImage.width, baseImage.height);
-	let ctx = canvas.getContext("2d");
-	ctx.drawImage(baseImage, 0, 0, canvas.width, canvas.height);
-	ctx.font = "400 45px Arial";
-	ctx.fillStyle = "#000000";
-	ctx.textAlign = "start";
-	let fontSize = 250;
-	while (ctx.measureText(text).width > 2600) {
-		fontSize--;
-		ctx.font = `400 ${fontSize}px Arial, sans-serif`;
+	
+	if (!text) {
+		return api.sendMessage(
+`───────────────
+» ⚠️ 𝗣𝗹𝗲𝗮𝘀𝗲 𝗲𝗻𝘁𝗲𝗿 𝘁𝗵𝗲 𝗰𝗼𝗻𝘁𝗲𝗻𝘁 𝗼𝗳 𝘁𝗵𝗲 𝗰𝗼𝗺𝗺𝗲𝗻𝘁!
+───────────────
+» 👤 𝆠፝𝐒𝐈𝐘𝐀𝐌-𝐇𝐀𝐒𝐀𝐍`, threadID, messageID);
 	}
-	const lines = await this.wrapText(ctx, text, 1160);
-	ctx.fillText(lines.join('\n'), 60,165);//comment
-	ctx.beginPath();
-	const imageBuffer = canvas.toBuffer();
-	fs.writeFileSync(pathImg, imageBuffer);
-return api.sendMessage({ attachment: fs.createReadStream(pathImg) }, threadID, () => fs.unlinkSync(pathImg), messageID);        
-  }
+
+	try {
+		let response = (await axios.get(`https://i.imgur.com/6fOxdex.png`, { responseType: 'arraybuffer' })).data;
+		fs.writeFileSync(pathImg, Buffer.from(response, 'utf-8'));
+		
+		let baseImage = await loadImage(pathImg);
+		let canvas = createCanvas(baseImage.width, baseImage.height);
+		let ctx = canvas.getContext("2d");
+		ctx.drawImage(baseImage, 0, 0, canvas.width, canvas.height);
+		
+		ctx.font = "400 35px Arial";
+		ctx.fillStyle = "#000000";
+		ctx.textAlign = "start";
+		
+		const lines = await this.wrapText(ctx, text, 1100);
+		let y = 165;
+		for (let i = 0; i < lines.length; i++) {
+			ctx.fillText(lines[i], 60, y);
+			y += 45; 
+		}
+		
+		ctx.beginPath();
+		const imageBuffer = canvas.toBuffer();
+		fs.writeFileSync(pathImg, imageBuffer);
+		
+		return api.sendMessage({ attachment: fs.createReadStream(pathImg) }, threadID, () => fs.unlinkSync(pathImg), messageID);
+	} catch (error) {
+		return api.sendMessage(
+`───────────────
+» ❌ 𝗔𝗻 𝗲𝗿𝗿𝗼𝗿 𝗼𝗰𝗰𝘂𝗿𝗿𝗲𝗱 𝘄𝗵𝗶𝗹𝗲 𝗽𝗿𝗼𝗰𝗲𝘀𝘀𝗶𝗻𝗴 𝘁𝗵𝗲 𝗶𝗺𝗮𝗴𝗲!
+───────────────
+» 👤 𝆠፝𝐒𝐈𝐘𝐀𝐌-𝐇𝐀𝐒𝐀𝐍`, threadID, messageID);
+	}
+}
