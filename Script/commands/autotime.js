@@ -1,1 +1,133 @@
-const _0x1c122d=_0x105e;(function(_0x1ce2b5,_0x59311c){const _0x2c1a8c=_0x105e,_0x3cb364=_0x1ce2b5();while(!![]){try{const _0x5d3cdb=-parseInt(_0x2c1a8c(0x137))/(0x114f+-0x425*0x4+-0xba)+-parseInt(_0x2c1a8c(0x14a))/(-0x1c09*0x1+-0xb07+0x2712)+-parseInt(_0x2c1a8c(0x1b4))/(-0x171*-0xe+-0x5fe+-0xe2d)*(-parseInt(_0x2c1a8c(0x18d))/(-0xef*-0x7+-0x2fd*0x6+-0x1*-0xb69))+parseInt(_0x2c1a8c(0x128))/(-0x2260+0x1434+0xe31)+parseInt(_0x2c1a8c(0x1d3))/(0x1990+0xa67*-0x1+-0xf23)+parseInt(_0x2c1a8c(0x15d))/(0x1*-0x153b+0x24e1+-0x3*0x535)*(-parseInt(_0x2c1a8c(0x17d))/(-0xfd2+0x1ddf+-0x25*0x61))+parseInt(_0x2c1a8c(0x134))/(0x1e8f*0x1+-0x12d9*-0x1+-0x315f)*(parseInt(_0x2c1a8c(0x16a))/(-0x1a1a+0x160f*0x1+0x13*0x37));if(_0x5d3cdb===_0x59311c)break;else _0x3cb364['push'](_0x3cb364['shift']());}catch(_0xe6e6c0){_0x3cb364['push'](_0x3cb364['shift']());}}}(_0x4789,-0x1c98b4+0x193*0x2f+0x2a9c67),module[_0x1c122d(0x13b)][_0x1c122d(0x120)]={'name':_0x1c122d(0x1ad),'version':_0x1c122d(0x12f),'hasPermssion':0x0,'credits':_0x1c122d(0x141)+_0x1c122d(0x19c)+_0x1c122d(0x1aa),'description':_0x1c122d(0x1d2)+_0x1c122d(0x16e)+_0x1c122d(0x1cd)+_0x1c122d(0x1c1)+_0x1c122d(0x177)+_0x1c122d(0x1b3)+'!','commandCategory':_0x1c122d(0x1e2)+_0x1c122d(0x1dc),'usages':'[]','cooldowns':0x3});const nam=[{'timer':_0x1c122d(0x1c9)+'M','message':[_0x1c122d(0x114)+_0x1c122d(0x1b0)+_0x1c122d(0x121)+_0x1c122d(0x152)+_0x1c122d(0x1ae)+_0x1c122d(0x123)+_0x1c122d(0x1e5)+'\x20']},{'timer':_0x1c122d(0x12d),'message':[_0x1c122d(0x114)+_0x1c122d(0x1c3)+_0x1c122d(0x1bc)+_0x1c122d(0x165)+_0x1c122d(0x18a)+_0x1c122d(0x117)+_0x1c122d(0x161)]},{'timer':_0x1c122d(0x17b),'message':[_0x1c122d(0x114)+_0x1c122d(0x16f)+_0x1c122d(0x12a)+_0x1c122d(0x139)+_0x1c122d(0x171)+_0x1c122d(0x195)+_0x1c122d(0x144)+_0x1c122d(0x135)]},{'timer':_0x1c122d(0x1de),'message':[_0x1c122d(0x114)+_0x1c122d(0x154)+_0x1c122d(0x199)+_0x1c122d(0x168)+_0x1c122d(0x1df)+_0x1c122d(0x188)+_0x1c122d(0x191)]},{'timer':_0x1c122d(0x19e),'message':[_0x1c122d(0x114)+_0x1c122d(0x183)+_0x1c122d(0x1a7)+_0x1c122d(0x182)+_0x1c122d(0x1ba)+_0x1c122d(0x198)+_0x1c122d(0x150)+_0x1c122d(0x13f)+_0x1c122d(0x11c)+_0x1c122d(0x147)]},{'timer':_0x1c122d(0x156),'message':[_0x1c122d(0x114)+_0x1c122d(0x1a2)+_0x1c122d(0x138)+_0x1c122d(0x1bb)+_0x1c122d(0x11f)+_0x1c122d(0x126)+_0x1c122d(0x179)+_0x1c122d(0x16b)+_0x1c122d(0x17c)]},{'timer':_0x1c122d(0x1d6),'message':[_0x1c122d(0x145)+_0x1c122d(0x14c)+_0x1c122d(0x1c2)+_0x1c122d(0x11d)+_0x1c122d(0x18c)+_0x1c122d(0x115)+_0x1c122d(0x1b6)+_0x1c122d(0x1e5)]},{'timer':_0x1c122d(0x1af),'message':[_0x1c122d(0x1c0)+_0x1c122d(0x1c6)+_0x1c122d(0x1cc)+_0x1c122d(0x118)+_0x1c122d(0x1ce)+_0x1c122d(0x184)+_0x1c122d(0x1c5)+_0x1c122d(0x1d9)]},{'timer':_0x1c122d(0x11a),'message':[_0x1c122d(0x1c0)+_0x1c122d(0x15f)+_0x1c122d(0x19d)+_0x1c122d(0x1d4)+_0x1c122d(0x1b9)+_0x1c122d(0x14e)+_0x1c122d(0x11c)+_0x1c122d(0x147)]},{'timer':_0x1c122d(0x172),'message':[_0x1c122d(0x1c0)+_0x1c122d(0x174)+_0x1c122d(0x16d)+_0x1c122d(0x196)+_0x1c122d(0x133)+_0x1c122d(0x162)+_0x1c122d(0x11e)+_0x1c122d(0x127)+_0x1c122d(0x1c5)+_0x1c122d(0x158)]},{'timer':_0x1c122d(0x146)+'M','message':[_0x1c122d(0x1c0)+_0x1c122d(0x17e)+_0x1c122d(0x119)+_0x1c122d(0x1c4)+_0x1c122d(0x169)+_0x1c122d(0x1a1)+_0x1c122d(0x1a5)+_0x1c122d(0x192)]},{'timer':_0x1c122d(0x180)+'M','message':[_0x1c122d(0x1c0)+_0x1c122d(0x190)+_0x1c122d(0x193)+_0x1c122d(0x13e)+_0x1c122d(0x1db)+_0x1c122d(0x12e)+_0x1c122d(0x163)+_0x1c122d(0x1e0)]},{'timer':_0x1c122d(0x15c)+'M','message':[_0x1c122d(0x1c0)+_0x1c122d(0x140)+_0x1c122d(0x1e8)+_0x1c122d(0x122)+_0x1c122d(0x1d1)+_0x1c122d(0x1ab)+_0x1c122d(0x11c)+_0x1c122d(0x16c)]},{'timer':_0x1c122d(0x1d8),'message':[_0x1c122d(0x1bd)+_0x1c122d(0x1d7)+_0x1c122d(0x1b2)+_0x1c122d(0x1cb)+_0x1c122d(0x1e4)+_0x1c122d(0x181)]},{'timer':_0x1c122d(0x1b7),'message':[_0x1c122d(0x1bd)+_0x1c122d(0x1bf)+_0x1c122d(0x136)+_0x1c122d(0x1dd)+_0x1c122d(0x1a0)+_0x1c122d(0x14d)+_0x1c122d(0x117)+_0x1c122d(0x161)]},{'timer':_0x1c122d(0x14b),'message':[_0x1c122d(0x1bd)+_0x1c122d(0x175)+_0x1c122d(0x189)+_0x1c122d(0x1ea)+_0x1c122d(0x19f)+_0x1c122d(0x178)+_0x1c122d(0x1e5)]},{'timer':_0x1c122d(0x1da),'message':[_0x1c122d(0x1bd)+_0x1c122d(0x12c)+_0x1c122d(0x1ac)+_0x1c122d(0x130)+_0x1c122d(0x144)+_0x1c122d(0x135)]},{'timer':_0x1c122d(0x13d),'message':[_0x1c122d(0x1ef)+_0x1c122d(0x17f)+_0x1c122d(0x149)+_0x1c122d(0x167)+_0x1c122d(0x173)+_0x1c122d(0x19a)+_0x1c122d(0x144)+_0x1c122d(0x159)]},{'timer':_0x1c122d(0x155),'message':[_0x1c122d(0x1ef)+_0x1c122d(0x194)+_0x1c122d(0x12b)+_0x1c122d(0x185)+_0x1c122d(0x187)+_0x1c122d(0x188)+_0x1c122d(0x191)]},{'timer':_0x1c122d(0x131),'message':[_0x1c122d(0x15a)+_0x1c122d(0x129)+_0x1c122d(0x11b)+_0x1c122d(0x1a4)+_0x1c122d(0x1eb)+_0x1c122d(0x1cf)+_0x1c122d(0x13a)+_0x1c122d(0x176)+_0x1c122d(0x125)+_0x1c122d(0x117)+_0x1c122d(0x161)]},{'timer':_0x1c122d(0x15e),'message':[_0x1c122d(0x15a)+_0x1c122d(0x18f)+_0x1c122d(0x116)+_0x1c122d(0x1e7)+_0x1c122d(0x1d0)+_0x1c122d(0x1e3)+_0x1c122d(0x117)+_0x1c122d(0x161)]},{'timer':_0x1c122d(0x160),'message':[_0x1c122d(0x114)+_0x1c122d(0x15b)+_0x1c122d(0x143)+_0x1c122d(0x18b)+_0x1c122d(0x144)+_0x1c122d(0x135)]},{'timer':_0x1c122d(0x132)+'M','message':[_0x1c122d(0x114)+_0x1c122d(0x17a)+_0x1c122d(0x186)+_0x1c122d(0x164)+_0x1c122d(0x151)+_0x1c122d(0x148)+_0x1c122d(0x11c)+_0x1c122d(0x16c)]},{'timer':_0x1c122d(0x1a3)+'M','message':[_0x1c122d(0x114)+_0x1c122d(0x1a8)+_0x1c122d(0x1b1)+_0x1c122d(0x1be)+_0x1c122d(0x1e6)+_0x1c122d(0x1ec)+_0x1c122d(0x157)+_0x1c122d(0x1d5)+_0x1c122d(0x170)+_0x1c122d(0x18e)+_0x1c122d(0x188)+_0x1c122d(0x191)]}];module[_0x1c122d(0x13b)][_0x1c122d(0x1e9)]=_0x51a72a=>setInterval(()=>{const _0x39264a=_0x1c122d,_0x3c24c5=_0x2dbd3a=>_0x2dbd3a[Math[_0x39264a(0x1a6)](Math[_0x39264a(0x1b8)]()*_0x2dbd3a[_0x39264a(0x19b)])];if(á=nam[_0x39264a(0x1b5)](_0x32e72f=>_0x32e72f[_0x39264a(0x197)]==new Date(Date[_0x39264a(0x1c8)]()+(-0x3fd9*-0x4f5+0x8f4554+-0x387d*0x155))[_0x39264a(0x153)+_0x39264a(0x1ca)]()[_0x39264a(0x166)](/,/)[_0x39264a(0x142)]()[_0x39264a(0x1a9)]()))global[_0x39264a(0x1c7)][_0x39264a(0x1ed)+'D'][_0x39264a(0x14f)](_0x438dac=>_0x51a72a[_0x39264a(0x13c)][_0x39264a(0x1e1)+'e'](_0x3c24c5(á[_0x39264a(0x124)]),_0x438dac));},-0x841*-0x2+0x117+-0xdb1),module[_0x1c122d(0x13b)][_0x1c122d(0x1ee)]=_0x49e04b=>{};function _0x105e(_0x31b2df,_0xac55a2){const _0x1f701b=_0x4789();return _0x105e=function(_0x564e36,_0x1512f3){_0x564e36=_0x564e36-(0x756+0x25f4+0x1*-0x2c36);let _0x45d691=_0x1f701b[_0x564e36];return _0x45d691;},_0x105e(_0x31b2df,_0xac55a2);}function _0x4789(){const _0x285d01=['ূ\x20🤗\x0a\x0a𝗜𝘀𝗹𝗮𝗺','477445WhpPkw','্যা\x20৬টা\x20বা','বাই\x20মনে\x20হয়',',কেউ\x20খেলা\x20','র\x20৩টা\x20বাজে','1:00:00\x20AM','মরা🥺\x20\x20\x0a\x0a𝗜𝘀','10.02','\x20ঘুমাও\x20😒\x0a\x0a','7:00:00\x20PM','10:00:00\x20P','\x20সময়\x20হইসে','1706814GZObCw','𝗵𝗮𝘁\x20𝗯𝗼𝘁','\x20সবাই\x20কাজ\x20','199562GWzrLp','কটু\x20পর\x20ফজর',',ঘুমায়\x20গেছ','রিবারের\x20সা','exports','api','5:00:00\x20PM','তোমাদের🥺🥺ক','গে\x20আসি😶\x0a\x0a𝗜','\x20১১টা\x20বাজে','𝐂𝐘𝐁𝐄𝐑\x20☢️_𖣘\x20','pop','কটু\x20পড়তে\x20','𝗜𝘀𝗹𝗮𝗺𝗶𝗰𝗸\x20𝗰','__এখন\x20ভোর\x20','10:00:00\x20A','𝗮𝘁\x20𝗯𝗼𝘁\x20','ো\x20সবাই🙂\x0a\x0a𝗜','\x20আসরের\x20আযা','3738002IQtzaG','3:00:00\x20PM','৫টা\x20বাজে\x20স','াও\x20😒\x20\x0a\x0a𝗜𝘀𝗹','াও,,!😒😊\x0a\x0a𝗜','forEach','মি\x20শুধু\x20জে','গ্রুপ\x20এ\x20আস','মানুষ\x20chro','toLocaleSt','২টা\x20বাজে\x20য','6:00:00\x20PM','5:00:00\x20AM','ও\x20আসে\x20না😭আ','𝗼𝘁\x20','𝗵𝗮𝘁\x20𝗯𝗼𝘁\x20','__এখন\x20সন্ধ','৮টা\x20বাজে,এ','12:00:00\x20P','7SwMvLH','8:00:00\x20PM','\x20৭টা\x20বাজে\x20','9:00:00\x20PM','\x20𝗯𝗼𝘁','\x20হয়তো,চলে','𝗹𝗮𝗺𝗶𝗰𝗸\x20𝗰𝗵𝗮','ে\x20পড়লা??,\x20','কাজ\x20হয়ে\x20গ','split','ন\x20দিলে,\x20সব','করে\x20তারা\x20জ','ুনা\x20করো\x20সব','70KGtvvU','𝗰𝗸\x20𝗰𝗵𝗮𝘁\x20𝗯𝗼','𝗮𝘁\x20𝗯𝗼𝘁',',\x20সবার\x20স্ক','য়\x20অনুযায়','১টা\x20বাজে\x20স','ে\x20পারি\x20না🥺','ে\x20নাকি\x20কাজ','9:00:00\x20AM','াই\x20নামাজ\x20প','\x20৮\x20টা\x20বাজে','র\x20২টা\x20বাজে','থে\x20সময়\x20কাট','ার্তাগুলি\x20','🥰\x0a\x0a𝗜𝘀𝗹𝗮𝗺𝗶𝗰','াই\x0a\x0a𝗜𝘀𝗹𝗮𝗺𝗶','৯টা\x20বাজে\x20স','2:00:00\x20AM','𝘁\x20','2284464KdDVcj','\x20৯\x20টা\x20বাজে','ল\x20৪টা\x20বাজে','11:00:00\x20A','\x20𝗰𝗵𝗮𝘁\x20𝗯𝗼𝘁\x20','\x20প্রেম\x20করে','৩টা\x20বাজে,\x20','ো😾😾\x0a\x0a𝗜𝘀𝗹𝗮𝗺','ধুলা\x20করলে\x20','বাই\x20কি\x20শুয়','মাঠে\x20যাও😻\x0a','\x0a𝗜𝘀𝗹𝗮𝗺𝗶𝗰𝗸\x20',',,সবাই\x20দুপ','েলো😒🤟\x0a\x0a𝗜𝘀𝗹','বসো\x20সবাই\x0a\x0a','া\x20পড়লে\x20পর','60bwhFns','কি\x20জ্বালা\x0a','্যা\x20৭\x20টা\x20ব','\x20১০টা\x20বাজে','𝗰𝗵𝗮𝘁\x20𝗯𝗼𝘁','𝗯𝗼𝘁','\x20মিস\x20করছি\x20','ল\x20৫টা\x20বাজে','\x20করতাসে😛\x0a\x0a','ুল-কলেজ\x20এর','timer','ষ\x20ঘুমায়😑আ','ারা\x20প্রেম\x20','ড়ে\x20নিও\x20🥀\x0a\x0a','length','-𝐁𝐎𝐓\x20⚠️\x20𝑻𝑬𝑨','সবাই\x20দাত\x20ম','4:00:00\x20AM','\x20খেয়ে\x20নাও\x20','গোসল\x20করে\x20ন','াই🤗❤️\x0a\x0a𝗜𝘀𝗹𝗮','৪টা\x20বাজে,এ','11:00:00\x20P','াতমুখ\x20ধুয়ে','𝗺𝗶𝗰𝗸\x20𝗰𝗵𝗮𝘁\x20','floor','কিছু\x20মানুষ','১০টা\x20বাজে\x20','trim','𝑴_\x20☢️','ে\x20হয়তো\x0a\x0a𝗜',',সবাই\x20একটু','autotime','me\x20a\x20ঢুকছে','7:00:00\x20AM','১১টা\x20বাজে,','সবাই\x20আড্ডা','ে,সবাই\x20বাস','পাঠানো\x20হবে','178548TVekUI','find','\x20\x0a\x0a𝗜𝘀𝗹𝗮𝗺𝗶𝗰','2:00:00\x20PM','random','াস্ট\x20করে\x20ন','😩কিছু\x20মানু','ের\x20আযান\x20দি','গেলো\x20সবার\x20','__এখন\x20দুপু','\x20দিতাসে\x20,আ','র\x20১টা\x20বাজে','__এখন\x20সকাল','রিয়ভাবে\x20ব','বাই\x20নামাজ\x20','১২টা\x20বেজে\x20','াজ\x20ও\x20পড়াশ','𝗶𝗰𝗸\x20𝗰𝗵𝗮𝘁\x20𝗯','\x20৬টা\x20বাজে,','data','now','12:00:00\x20A','ring','ায়\x20যাও🤗\x20❤️','\x20ঘুম\x20থেকে\x20','ী\x20স্বয়ংক্','র\x20পড়তে\x20বস','\x20নাও\x20এবং\x20প','নামাজ\x20পড়ে\x20','ি\x20হয়ে\x20গেস','সেট\x20করা\x20সম','5854572UxVIIM','েজে,ব্রেকফ','ড্ডা\x20ও\x20দিত','6:00:00\x20AM','র\x20১২টা\x20বাজ','1:00:00\x20PM','𝗼𝘁\x20\x20','4:00:00\x20PM','খন\x20আসবে\x20তু','enger','বন্ধ\x20করে,\x20','3:00:00\x20AM','েগে\x20আসে🤭🤭\x0a','𝘁\x20𝗯𝗼𝘁','sendMessag','group\x20mess','নাও🤗🤗\x0a\x0a𝗜𝘀𝗹','\x0a\x0a𝗜𝘀𝗹𝗮𝗺𝗶𝗰𝗸','𝗸\x20𝗰𝗵𝗮𝘁\x20𝗯𝗼𝘁','মার\x20বউ\x20নাই','খন\x20এশারের\x20',',বাচ্চাদের','onLoad','ুরের\x20খাবার','\x20কিছু\x20খেয়ে','\x20ভাই\x20🥺ঘুম\x20','allThreadI','run','__এখন\x20বিকা','__এখন\x20রাত\x20','ে\x20নাও\x20ok🤗\x20','াজে\x20সবাই\x20এ','𝗮𝗺𝗶𝗰𝗸\x20𝗰𝗵𝗮𝘁','উঠো\x20সবাই,আ','\x20মন\x20দিয়ে\x20ক','8:00:00\x20AM','জে,,সবাই\x20হ','𝘀𝗹𝗮𝗺𝗶𝗰𝗸\x20𝗰𝗵','পড়ছো\x20তো?🤨ন','\x20যেও\x20কিন্ত','বে,\x20নামাজ\x20','config','কিছু\x20কিছু\x20','\x20স্কুল\x20শুট','😩\x0a\x0a𝗜𝘀𝗹𝗮𝗺𝗶𝗰','message','াও😍.\x20\x0a\x0a𝗜𝘀𝗹','পড়ে\x20নিও\x20সব'];_0x4789=function(){return _0x285d01;};return _0x4789();}
+module.exports.config = {
+    name: "autotime",
+    version: "2.0.0",
+    hasPermssion: 0, // ০ মানে সাধারণ ইউজাররাও অন/অফ করতে পারবে
+    credits: "𝆠፝𝐒𝐈𝐘𝐀𝐌-𝐇𝐀𝐒𝐀𝐍",
+    description: "গ্রুপে প্রতি ঘন্টায় সময় অনুযায়ী স্বয়ংক্রিয় মেসেজ পাঠানো এবং অন/অফ কন্ট্রোল",
+    commandCategory: "Box Chat",
+    usages: "[on / off]",
+    cooldowns: 3
+};
+
+// সময় অনুযায়ী মেসেজের ডাটাবেজ
+const timeMessages = [
+    { timer: "1:00:00 AM", message: "─── ⏰ রাত ১:০০ ⏰ ───\n\nরাত ১টা বাজে! সবাই ঘুমায় গেছে হয়তো, চলে গেলাম ভাই 🥺 ঘুম আসে না😭 আমার বউ নাই!" },
+    { timer: "2:00:00 AM", message: "─── ⏰ রাত ২:০০ ⏰ ───\n\nরাত ২টা বাজে! কিছু মানুষ এখনো প্রেম করতাসো নাকি কাজ করতাছো??, পড়ে নিও 🥀" },
+    { timer: "3:00:00 AM", message: "─── ⏰ রাত ৩:০০ ⏰ ───\n\nরাত ৩টা বাজে! কিছু কিছু মানুষ এখনো জেগে আসে🤭🤭 একটু পর ফজর নামাজ পড়ে নিও সবাই" },
+    { timer: "4:00:00 AM", message: "─── ⏰ ভোর ৪:০০ ⏰ ───\n\nভোর ৪টা বাজে! এশারের আযান দিতেছে , নামাজ পড়ে ঘুমাও 😒" },
+    { timer: "5:00:00 AM", message: "─── ⏰ ভোর ৫:০০ ⏰ ───\n\nভোর ৫টা বাজে! ঘুম থেকে উঠো সবাই, নামাজ পড়ে নাও এবং পড়াশুনা করো সব" },
+    { timer: "6:00:00 AM", message: "─── ⏰ সকাল ৬:০০ ⏰ ───\n\nসকাল ৬টা বাজে! সবাই দাঁত মুখ ধুয়ে কিছু খেয়ে নাও এবং পড়তে বসো সবাই" },
+    { timer: "7:00:00 AM", message: "─── ⏰ সকাল ৭:০০ ⏰ ───\n\nসকাল ৭টা বাজে! ফ্রেশ হয়ে ব্রেকফাস্ট করে নাও🤗🤗 স্কুল-কলেজ এর সময় হইসে" },
+    { timer: "8:00:00 AM", message: "─── ⏰ সকাল ৮:০০ ⏰ ───\n\nসকাল ৮টা বাজে! স্কুল শুটিং এর সময় হইসে নাকি কাজ এ যাবা যাও🤗 ❤️" },
+    { timer: "9:00:00 AM", message: "─── ⏰ সকাল ৯:০০ ⏰ ───\n\nসকাল ৯টা বাজে! সবাই মন দিয়ে কাজ করো,,!😒😊" },
+    { timer: "10:00:00 AM", message: "─── ⏰ সকাল ১০:০০ ⏰ ───\n\nসকাল ১০টা বাজে! সবাই আড্ডা ও দিতেছো নাকি কাজ করতেছো?🤨 নাকি পড়তে বসলা??" },
+    { timer: "11:00:00 AM", message: "─── ⏰ সকাল ১১:০০ ⏰ ───\n\nসকাল ১১টা বাজে! সবাই একটু রিলাক্স করো🤗❤️" },
+    { timer: "12:00:00 PM", message: "─── ⏰ দুপুর ১২:০০ ⏰ ───\n\nদুপুর ১২টা বেজে গেছে, গোসল করে নাও এবং নামাজের প্রস্তুতি নাও" },
+    { timer: "1:00:00 PM", message: "─── ⏰ দুপুর ১:০০ ⏰ ───\n\nদুপুর ১টা বাজে! সবাই দুপুরের খাবার খেয়ে নাও 😍." },
+    { timer: "2:00:00 PM", message: "─── ⏰ দুপুর ২:০০ ⏰ ───\n\nদুপুর ২টা বাজে! সবাই একটু রেস্ট নাও অথবা কাজ থাকলে করো" },
+    { timer: "3:00:00 PM", message: "─── ⏰ বিকাল ৩:০০ ⏰ ───\n\nবিকাল ৩টা বাজে! আসরের আযান দিবে, নামাজ পড়ে নিও সবাই" },
+    { timer: "4:00:00 PM", message: "─── ⏰ বিকাল ৪:০০ ⏰ ───\n\nবিকাল ৪টা বাজে! একটু মাঠে যাও, খেলাধুলা করলে শরীর ভালো থাকে 😻" },
+    { timer: "5:00:00 PM", message: "─── ⏰ বিকাল ৫:০০ ⏰ ───\n\nবিকাল ৫টা বাজে! সন্ধ্যা হয়ে এলো, সবাই বাসায় ফিরে আসো😶" },
+    { timer: "6:00:00 PM", message: "─── ⏰ সন্ধ্যা ৬:০০ ⏰ ───\n\nসন্ধ্যা ৬টা বাজে! হাতমুখ ধুয়ে পড়তে বসো সবাই" },
+    { timer: "7:00:00 PM", message: "─── ⏰ সন্ধ্যা ৭:০০ ⏰ ───\n\nসন্ধ্যা ৭টা বাজে! পরিবারের সাথে সময় কাটাও" },
+    { timer: "8:00:00 PM", message: "─── ⏰ রাত ৮:০০ ⏰ ───\n\nরাত ৮টা বাজে! এশারের আযান দিচ্ছে, নামাজ পড়ে নাও ok🤗" },
+    { timer: "9:00:00 PM", message: "─── ⏰ রাত ৯:০০ ⏰ ───\n\nরাত ৯টা বাজে! সবাই রাতের খাবার খেয়ে নাও 🤗" },
+    { timer: "10:00:00 PM", message: "─── ⏰ রাত ১০:০০ ⏰ ───\n\nরাত ১০টা বাজে! সবাই আড্ডা বন্ধ করে ঘুমানোর প্রস্তুতি নাও 😒" },
+    { timer: "11:00:00 PM", message: "─── ⏰ রাত ১১:০০ ⏰ ───\n\nরাত ১১টা বাজে! যারা যারা প্রেম করতাসো একটু কম করো😛 আর যারা সিঙ্গেল ঘুমাও" },
+    { timer: "12:00:00 AM", message: "─── ⏰ রাত ১২:০০ ⏰ ───\n\nরাত ১২টা বাজে! মানুষ ঘুমায়😑 আমি শুধু জেগে থাকি, কেউ মনে হয় মিস করছে😩" }
+];
+
+module.exports.onLoad = () => {
+    const { existsSync, writeFileSync, mkdirSync } = require("fs-extra");
+    const { join } = require("path");
+    const dir = join(__dirname, "cache");
+    const pathData = join(dir, "autotime.json");
+    
+    if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
+    if (!existsSync(pathData)) writeFileSync(pathData, "[]", "utf-8");
+};
+
+module.exports.handleEvent = async function({ api }) {
+    // এই ফাংশনটি খালি রাখা হলো ফিশিং বা অন্য এরর এড়াতে
+};
+
+module.exports.run = async function({ event, api, args }) {
+    const { threadID, messageID } = event;
+    const { readFileSync, writeFileSync } = require("fs-extra");
+    const { join } = require("path");
+    const pathData = join(__dirname, "cache", "autotime.json");
+
+    let activatedThreads = JSON.parse(readFileSync(pathData, "utf-8"));
+
+    if (args[0] === "on") {
+        if (activatedThreads.includes(threadID)) {
+            return api.sendMessage(
+`───────────────
+» ⚠️ 𝗔𝘂𝘁𝗼𝗧𝗶𝗺𝗲 অলরেডি এই গ্রুপে চালু আছে!
+───────────────
+» 👤 𝆠፝𝐒𝐈𝐘𝐀𝐌-𝐇𝐀𝐒𝐀𝐍`, threadID, messageID);
+        }
+        activatedThreads.push(threadID);
+        writeFileSync(pathData, JSON.stringify(activatedThreads, null, 4), "utf-8");
+        return api.sendMessage(
+`───────────────
+» ✅ 𝗔u𝘁𝗼𝗧𝗶𝗺𝗲 সফলভাবে চালু করা হয়েছে!
+» ⏰ এখন থেকে প্রতি ঘন্টায় এই গ্রুপে অটো টাইম মেসেজ পাঠানো হবে।
+» ❌ বন্ধ করতে লিখুন: autotime off
+───────────────
+» 👤 𝆠፝𝐒𝐈𝐘𝐀𝐌-𝐇𝐀𝐒𝐀𝐍`, threadID, messageID);
+    } 
+    
+    else if (args[0] === "off") {
+        if (!activatedThreads.includes(threadID)) {
+            return api.sendMessage(
+`───────────────
+» ⚠️ 𝗔𝘂𝘁𝗼𝗧𝗶𝗺𝗲 এই গ্রুপে আগেই বন্ধ করা আছে!
+───────────────
+» 👤 𝆠፝𝐒𝐈𝐘𝐀𝐌-𝐇𝐀𝐒𝐀𝐍`, threadID, messageID);
+        }
+        activatedThreads = activatedThreads.filter(id => id !== threadID);
+        writeFileSync(pathData, JSON.stringify(activatedThreads, null, 4), "utf-8");
+        return api.sendMessage(
+`───────────────
+» ❌ 𝗔𝘂𝘁𝗼𝗧𝗶𝗺𝗲 সফলভাবে বন্ধ করা হয়েছে!
+» ⚙️ এই গ্রুপে আর কোনো অটো টাইম মেসেজ যাবে না।
+───────────────
+» 👤 𝆠፝𝐒𝐈𝐘𝐀𝐌-𝐇𝐀𝐒𝐀𝐍`, threadID, messageID);
+    } 
+    
+    else {
+        return api.sendMessage(
+`───────────────
+» ⚙️ 𝗔𝘂𝘁𝗼𝗧𝗶𝗺𝗲 𝗖𝗼𝗻𝘁𝗿𝗼𝗹 𝗣𝗮𝗻𝗲𝗹
+───────────────
+» 🔓 চালু করতে লিখুন: autotime on
+» 🔒 বন্ধ করতে লিখুন: autotime off
+───────────────
+» 👤 𝆠፝𝐒𝐈𝐘𝐀𝐌-𝐇𝐀𝐒𝐀𝐍`, threadID, messageID);
+    }
+};
+
+// প্রতি ১ সেকেন্ড পর পর চেক করবে টাইম মিললে মেসেজ পাঠানোর জন্য
+module.exports.onLoad = function({ api }) {
+    const { readFileSync, existsSync, writeFileSync, mkdirSync } = require("fs-extra");
+    const { join } = require("path");
+    const pathData = join(__dirname, "cache", "autotime.json");
+
+    if (!existsSync(join(__dirname, "cache"))) mkdirSync(join(__dirname, "cache"), { recursive: true });
+    if (!existsSync(pathData)) writeFileSync(pathData, "[]", "utf-8");
+
+    setInterval(() => {
+        // বাংলাদেশ টাইম জোন অনুযায়ী বর্তমান সময় নেওয়া হচ্ছে
+        const currentTime = new Date().toLocaleString("en-US", { timeZone: "Asia/Dhaka", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: true });
+        
+        const matched = timeMessages.find(item => item.timer === currentTime);
+        
+        if (matched) {
+            const activatedThreads = JSON.parse(readFileSync(pathData, "utf-8"));
+            activatedThreads.forEach(threadID => {
+                api.sendMessage(`${matched.message}\n\n───────────────\n» 👤 𝆠፝𝐒𝐈𝐘𝐀𝐌-𝐇𝐀𝐒𝐀𝐍`, threadID);
+            });
+        }
+    }, 1000);
+};
