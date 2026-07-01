@@ -13,7 +13,7 @@ module.exports.run = async ({ api, event, args, Threads }) => {
     const { threadID, messageID } = event;
     const input = args[0]?.toLowerCase();
 
-    
+    // Check Input Validations (on/off)
     if (input !== "on" && input !== "off") {
         return api.sendMessage(`───────────────\n» ⚠️ 𝗜𝗻𝘃𝗮𝗹𝗶𝗱 𝗨𝘀𝗮𝗴𝗲!\n» 𝗣𝗹𝗲𝗮𝘀𝗲 𝘂𝘀𝗲: antiout [on/off]\n───────────────\n» 👤 𝆠፝𝐒𝐈𝐘𝐀𝐌-𝐇𝐀𝐒𝐀𝐍`, threadID, messageID);
     }
@@ -22,9 +22,10 @@ module.exports.run = async ({ api, event, args, Threads }) => {
         const threadData = await Threads.getData(threadID);
         const data = threadData.data || {};
 
-        
+        // Set status based on input
         data.antiout = (input === "on");
 
+        // Save Data to Database safely
         await Threads.setData(threadID, { data });
         global.data.threadData.set(parseInt(threadID), data);
 
