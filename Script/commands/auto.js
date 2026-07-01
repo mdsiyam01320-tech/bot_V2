@@ -1,40 +1,53 @@
+const axios = require("axios");
+const fs = require("fs-extra");
+const path = require("path");
+const { alldown } = require("shaon-videos-downloader");
+
 module.exports = {
- config:{
- name: "autodl",
- version: "0.0.2",
- hasPermssion: 0,
- credits: "SHAON",
- description: "auto video download",
- commandCategory: "user",
- usages: "",
- cooldowns: 5,
-},
-run: async function({ api, event, args }) {},
-handleEvent: async function ({ api, event, args }) {
- const axios = require("axios")
- const request = require("request")
- const fs = require("fs-extra")
- const content = event.body ? event.body : '';
- const body = content.toLowerCase();
- const { alldown } = require("shaon-videos-downloader")
- if (body.startsWith("https://")) {
- api.setMessageReaction("⚠️", event.messageID, (err) => {}, true);
-const data = await alldown(content);
- console.log(data)
- let Shaon = data.url;
- api.setMessageReaction("☢️", event.messageID, (err) => {}, true);
- const video = (await axios.get(Shaon, {
- responseType: "arraybuffer",
- })).data;
- fs.writeFileSync(__dirname + "/cache/auto.mp4", Buffer.from(video, "utf-8"))
+  config: {
+    name: "autodl",
+    version: "0.0.2",
+    hasPermssion: 0,
+    credits: "𝆠፝𝐒𝐈𝐘𝐀𝐌-𝐇𝐀𝐒𝐀𝐍",
+    description: "Auto video downloader from links.",
+    commandCategory: "user",
+    usages: "ব্যবহারের নিয়ম: চ্যাটে যেকোনো ভিডিওর লিঙ্ক দিন",
+    cooldowns: 5,
+  },
 
- return api.sendMessage({
- body: `🔥🚀 𝗜𝘀𝗹𝗮𝗺𝗶𝗰𝗸 𝗰𝗵𝗮𝘁 𝗯𝗼𝘁 | ᵁᴸᴸ⁴ˢᴴ 🔥💻 
-📥⚡𝗔𝘂𝘁𝗼 𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱𝗲𝗿⚡📂
-🎬 𝐄𝐧𝐣𝐨𝐲 𝐭𝐡𝐞 𝐕𝐢𝐝𝐞𝐨 🎀`,
- attachment: fs.createReadStream(__dirname + "/cache/auto.mp4")
+  run: async function ({ api, event }) {},
 
- }, event.threadID, event.messageID);
- }
-}
-}
+  handleEvent: async function ({ api, event }) {
+    const content = event.body ? event.body : '';
+    const body = content.toLowerCase();
+
+    if (body.startsWith("https://")) {
+      const out = msg => api.sendMessage(`───────────────\n» ${msg}\n───────────────\n» 👤 𝆠፝𝐒𝐈𝐘𝐀𝐌-𝐇𝐀𝐒𝐀𝐍`, event.threadID, event.messageID);
+      const cacheDir = path.resolve(__dirname, "cache");
+      const filePath = path.resolve(cacheDir, `auto_${event.messageID}.mp4`);
+
+      try {
+        if (!fs.existsSync(cacheDir)) fs.mkdirSync(cacheDir, { recursive: true });
+
+        api.setMessageReaction("📥", event.messageID, () => {}, true);
+
+        const data = await alldown(content);
+        if (!data || !data.url) return;
+
+        const videoRes = await axios.get(data.url, { responseType: "arraybuffer" });
+        fs.writeFileSync(filePath, Buffer.from(videoRes.data, "utf-8"));
+
+        api.setMessageReaction("✅", event.messageID, () => {}, true);
+
+        return api.sendMessage({
+          body: `───────────────\n» 🟢 **𝐀𝐔𝐓𝐎  𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑**\n\n🎬 𝐄𝐧𝐣𝐨𝐲 𝐭𝐡𝐞 𝐕𝐢𝐝𝐞𝐨 🎀`,
+          attachment: fs.createReadStream(filePath)
+        }, event.threadID, () => fs.unlinkSync(filePath), event.messageID);
+
+      } catch (error) {
+        api.setMessageReaction("❌", event.messageID, () => {}, true);
+        if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+      }
+    }
+  }
+};
